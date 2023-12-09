@@ -3,9 +3,7 @@ from werkzeug.utils import secure_filename
 import speech_recognition as sr
 import openai
 # Set your OpenAI GPT-3 API key
-#####openai.api_key = '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'
-#openai.api_key = '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'
-openai.api_key = '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'
+openai.api_key = ''
 app = Flask(__name__)
 
 UPLOAD_FOLDER = 'uploads'
