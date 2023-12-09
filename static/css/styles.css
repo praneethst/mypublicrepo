@@ -1,0 +1,247 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin: 50px;
+    min-height: 100vh;
+    background-color: #757f9a;
+    background-image: linear-gradient(147deg, #757f9a 0%, #d7dde8 100%);
+}
+
+h1 {
+    color: #333;
+}
+
+
+
+
+
+
+.drop-container {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    border: 2px dashed #fff;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+  }
+  
+  .drop-container:hover {
+    background: #eee;
+    border-color: #111;
+  }
+  
+  .drop-container:hover .drop-title {
+    color: #222;
+  }
+  
+  .drop-title {
+    color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    transition: color .2s ease-in-out;
+  }
+  .drop-container input[type=file] {
+    width: 350px;
+    max-width: 100%;
+    color: #444;
+    padding: 5px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
+  }
+  .drop-container input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #8db6ff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+  }
+  
+  .drop-container input[type=file]::file-selector-button:hover {
+    background: #0d45a5;
+  }
+.convertBtn{
+    padding: 21px;
+    background: #084cdf;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    border-radius:0 0 10px 10px;
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+#main_container{
+    width: 100%;
+}
+.halfDiv{width: calc(50% - 20px);float: left; }
+.halfDivResult{min-height:350px; overflow: auto; text-align: left;border-radius:10px; padding: 40px; background-color:rgb(0 0 0 / 10%); border:1px solid rgb(0 0 0 / 20%);}
+
+
+body * {
+  box-sizing: border-box;
+}
+
+.rating-stars {
+display: block;
+width: 50vmin;
+padding: 1.75vmin 10vmin 2vmin 3vmin;
+background: linear-gradient(90deg, #ffffff90 40vmin, #fff0 40vmin 100%);
+border-radius: 5vmin;
+position: relative;
+margin: 0 auto;
+}
+
+.rating-counter {
+font-size: 5.5vmin;
+  font-family: Arial, Helvetica, serif;
+  color: #9aacc6;
+  width: 10vmin;
+  text-align: center;
+  background: #0006;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  border-radius: 0 5vmin 5vmin 0;
+  line-height: 8vmin;
+}
+
+.rating-counter:before {
+content: "0";
+transition: all 0.25s ease 0s;	
+}
+
+
+
+.rating-stars input { display: none; }
+
+.rating-stars label {
+width: 3vmin;
+height: 3vmin;
+background: #000b;
+display: inline-flex;
+cursor: pointer;
+margin: 0.5vmin 0.65vmin;
+transition: all 1s ease 0s;	
+clip-path: polygon(50% 0%, 66% 32%, 100% 38%, 78% 64%, 83% 100%, 50% 83%, 17% 100%, 22% 64%, 0 38%, 34% 32%);
+}
+
+.rating-stars label[for=rs0] {
+display: none;
+}
+
+.rating-stars label:before {
+width: 90%;
+height: 90%;
+content: "";
+background: orange;
+z-index: -1;
+display: block;
+margin-left: 5%;
+margin-top: 5%;
+clip-path: polygon(50% 0%, 66% 32%, 100% 38%, 78% 64%, 83% 100%, 50% 83%, 17% 100%, 22% 64%, 0 38%, 34% 32%);
+background: linear-gradient(90deg, yellow, orange 30% 50%, #184580 50%, 70%, #173a75 100%);
+background-size: 205% 100%;
+background-position: 0 0;
+}
+
+.rating-stars label:hover:before {
+transition: all 0.25s ease 0s;		
+}
+
+.rating-stars input:checked + label ~ label:before {
+background-position: 100% 0;
+transition: all 0.25s ease 0s;	
+}
+
+.rating-stars input:checked + label ~ label:hover:before {
+background-position: 0% 0
+}
+
+
+
+
+
+#rs1:checked ~ .rating-counter:before {
+content: "1";
+}
+
+#rs2:checked ~ .rating-counter:before {
+content: "2";
+}
+
+#rs3:checked ~ .rating-counter:before {
+content: "3";
+}
+
+#rs4:checked ~ .rating-counter:before {
+content: "4";
+}
+
+#rs5:checked ~ .rating-counter:before {
+content: "5";
+}
+
+.rating-stars label + input:checked ~ .rating-counter:before {
+color: #ffab00 !important;
+transition: all 0.25s ease 0s;
+}
+
+
+
+
+
+.rating-stars label:hover ~ .rating-counter:before {
+color: #9aacc6 !important;
+transition: all 0.5s ease 0s;	
+animation: pulse 1s ease 0s infinite;
+}
+
+@keyframes pulse {
+  50% { font-size: 6.25vmin; }
+}
+
+.rating-stars label[for=rs1]:hover ~ .rating-counter:before {
+content: "1" !important;
+}
+
+.rating-stars label[for=rs2]:hover ~ .rating-counter:before {
+content: "2" !important;
+}
+
+.rating-stars label[for=rs3]:hover ~ .rating-counter:before {
+content: "3" !important;
+}
+
+.rating-stars label[for=rs4]:hover ~ .rating-counter:before {
+content: "4" !important;
+}
+
+.rating-stars label[for=rs5]:hover ~ .rating-counter:before {
+content: "5" !important;
+}
+
+
+.rating-stars input:checked:hover ~ .rating-counter:before {
+animation: none !important;
+color: #ffab00 !important ;
+}
+#result br
+{   
+  content:"A";
+    display: block !important;
+    margin-bottom:1rem !important;
+    border-bottom:1px dotted rgb(0 0 0 / 30%);
+}

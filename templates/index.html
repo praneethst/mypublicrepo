@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice to Text Converter</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body>
+    <h1>Voice to Text Converter</h1>
+
+
+    <label for="images" class="drop-container" id="dropcontainer">
+        <span class="drop-title">Drop an Audio file here</span>
+        or
+        <input type="file" accept="audio/*" id="audioInput" required>
+      </label>
+      <button class="convertBtn" onclick="convertAudio()">Convert</button>
+
+   
+    <div id="main_container">
+        <div class="rating-stars">
+            <input class="starRating" type="radio" name="rating" id="rs0" checked><label for="rs0"></label>
+            <input class="starRating"  type="radio" name="rating" id="rs1"><label for="rs1"></label>
+            <input class="starRating"  type="radio" name="rating" id="rs2"><label for="rs2"></label>
+            <input class="starRating"  type="radio" name="rating" id="rs3"><label for="rs3"></label>
+            <input class="starRating"  type="radio" name="rating" id="rs4"><label for="rs4"></label>
+            <input class="starRating"  type="radio" name="rating" id="rs5"><label for="rs5"></label>
+            <span class="rating-counter"></span>
+        </div>
+        
+    <div class="halfDiv"  style="margin-right: 20px;"><h3>Converted Text:</h3>
+        <div  class="halfDivResult"  id="result">
+        </div></div>
+
+        <div class="halfDiv" style="margin-left: 20px;">  <h3>Agent Report:</h3>
+            <div  class="halfDivResult" id="result1">
+            </div></div>
+       
+    </div>
+    
+
+    <script>
+     function convertAudio() {
+    const audioInput = document.getElementById('audioInput');
+    const resultDiv = document.getElementById('result');
+    const resultDiv1 = document.getElementById('result1');
+
+    if (!audioInput.files.length) {
+        alert('Please select an audio file');
+        return;
+    }
+
+    const file = audioInput.files[0];
+    const formData = new FormData();
+    formData.append('audio', file);
+
+    fetch('/convert', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        resultDiv.innerText = `${data.text}`;
+        resultDiv1.innerText = `${data.ke}`;
+        starfill()
+        
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+    function starfill(){
+	//const x=document.getElementById('result1');
+        //const x1=x.textContent.trim();
+   	const x1=4
+        const star=document.querySelectorAll('.starRating')
+        for (let i=0;i<star.length; i++) {
+	if (i < x1){
+	star[i].checked=true
+	
+        }
+	else{
+	star[i].checked=false
+      }
+   }
+
+   
+   }
+    </script>
+
+</body>
+</html>
+
